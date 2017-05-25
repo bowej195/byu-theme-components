@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../dist/components.js"></script>
+</head>
+<body>
+<test-fixture id="simple">
+    <template>
+        <byu-header></byu-header>
+    </template>
+</test-fixture>
+<script>
+    suite('classList', () => {
+        var header;
+        setup(() => {
+            header = fixture('simple');
+        });
+        test('foo', () => {
+            header.classList.add('foo');
+        });
+        test('bar', () => {
+            header.classList.add('bar');
+        });
+    });
+</script>
+</body>
+</html>

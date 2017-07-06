@@ -1,0 +1,22 @@
+{
+  "name": "byu-theme-components",
+  "description": "This bower file exists only for properly running tests, as web-component-tester requires bower.",
+  "main": "",
+  "authors": [
+    "Joseph Moore <joseph_moore@byu.edu>"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/byuweb/byu-theme-components",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.1"
+  }
+}

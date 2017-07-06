@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gulp build",
     "serve": "gulp watch",
-    "test": "bower install && wct test/"
+    "test": "gulp test"
   },
   "private": true,
   "author": "",
@@ -21,6 +21,7 @@
     "byu-web-component-build": "^0.2.3",
     "git-revision-webpack-plugin": "^2.5.1",
     "gulp": "^3.9.1",
+    "gulp-bower": "^0.0.13",
     "gulp-rename": "^1.2.2",
     "web-component-tester": "^6.0.0"
   }

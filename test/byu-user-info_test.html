@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../bower_components/web-component-tester/browser.js"></script>
     <script src="../dist/components.js"></script>
     <script src="../bower_components/chai-dom/chai-dom.js"></script>
@@ -34,23 +34,24 @@
 </test-fixture>
 <script>
     describe('byu-user-info', function () {
-        var simple;
-        beforeEach(function (done) {
-            simple = fixture('simple');
-            setTimeout(done);
-        });
 
         describe('basic setup', function () {
+            var simple;
+            beforeEach(function (done) {
+                simple = fixture('simple');
+                setTimeout(done);
+            });
             it('should initialize a shadow root', function () {
                 expect(simple).to.have.property('shadowRoot');
             });
-        });
 
-        describe('accessibility', function () {
-            it('should set role attribute', function () {
-                var role = simple.getAttribute('role');
-                expect(role).to.equal('button', 'role');
+            describe('accessibility', function () {
+                it('should set role attribute', function () {
+                    var role = simple.getAttribute('role');
+                    expect(role).to.equal('button', 'role');
+                });
             });
+
         });
 
         describe('without user', function () {

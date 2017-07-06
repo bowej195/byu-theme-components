@@ -24,7 +24,11 @@ gulp.task('build', ['wc:build', 'temp:copy-files'], function() {
     browserSync.reload();
 });
 
-require('web-component-tester').gulp.init(gulp, ['wc:build']);
+gulp.task('bower', function() {
+   return require('gulp-bower')();
+});
+
+require('web-component-tester').gulp.init(gulp, ['wc:build', 'bower']);
 
 initWcBuild(gulp, {
     componentName: 'byu-theme-components',

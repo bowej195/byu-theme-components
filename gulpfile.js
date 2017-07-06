@@ -24,6 +24,8 @@ gulp.task('build', ['wc:build', 'temp:copy-files'], function() {
     browserSync.reload();
 });
 
+require('web-component-tester').gulp.init(gulp, ['wc:build']);
+
 initWcBuild(gulp, {
     componentName: 'byu-theme-components',
     js: {
@@ -57,7 +59,11 @@ gulp.task('watch', ['build'], function (done) {
         notify: false
     }, done);
 
-    gulp.watch(['index.html', './components/**', './css/*.scss'], ['build']);
+    gulp.watch(['index.html', './components/**', './css/*.scss', './test/**'], ['build']);
+});
+
+gulp.task('autotest', ['test'], function() {
+    gulp.watch(['./components/**', './css/*.scss', './test/**'], ['test'])
 });
 
 gulp.task('default', ['watch']);

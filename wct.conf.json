@@ -3,5 +3,8 @@
   "plugins": {
     "local": {
     }
-  }
+  },
+  "suites": [
+    "test/index.html"
+  ]
 }

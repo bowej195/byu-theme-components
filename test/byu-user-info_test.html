@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../dist/components.js"></script>
+    <script src="../bower_components/chai-dom/chai-dom.js"></script>
+    <script src="utils.js"></script>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+</head>
+<body style="background-color: #2f4f4f;">
+<test-fixture id="simple">
+    <template>
+        <byu-user-info></byu-user-info>
+    </template>
+</test-fixture>
+<test-fixture id="noUser">
+    <template>
+        <byu-user-info>
+            <a slot="login">Sign In</a>
+            <a slot="logout">Sign Out</a>
+        </byu-user-info>
+    </template>
+</test-fixture>
+<test-fixture id="hasUser">
+    <template>
+        <byu-user-info>
+            <a slot="login">Sign In</a>
+            <a slot="logout">Sign Out</a>
+            <span slot="user-name">User</span>
+        </byu-user-info>
+    </template>
+</test-fixture>
+<script>
+    describe('byu-user-info', function () {
+        var simple;
+        beforeEach(function (done) {
+            simple = fixture('simple');
+            setTimeout(done);
+        });
+
+        describe('basic setup', function () {
+            it('should initialize a shadow root', function () {
+                expect(simple).to.have.property('shadowRoot');
+            });
+        });
+
+        describe('accessibility', function () {
+            it('should set role attribute', function () {
+                var role = simple.getAttribute('role');
+                expect(role).to.equal('button', 'role');
+            });
+        });
+
+        describe('without user', function () {
+            var noUser, login, logout;
+            beforeEach(function (done) {
+                noUser = fixture('noUser');
+                setTimeout(function () {
+                    login = noUser.querySelector('[slot="login"]');
+                    logout = noUser.querySelector('[slot="logout"]');
+                    done();
+                });
+            });
+            it('should show a sign in link', function () {
+                expect(login).property('offsetParent').to.not.be.null;
+
+                var style = getComputedStyle(login);
+                expect(style).property('color').to.be.colored('#FFFFFF')
+            });
+            it('should not show a sign out link', function () {
+                expect(logout).property('offsetParent').to.be.null;
+            });
+
+            it('should change to a sign out link when a user name is added', function (done) {
+                //Initial condition
+                expect(login).property('offsetParent').to.not.be.null;
+                expect(logout).property('offsetParent').to.be.null;
+
+                var user = document.createElement('span');
+                user.innerText = 'user';
+                user.setAttribute('slot', 'user-name');
+
+                noUser.appendChild(user);
+
+                setTimeout(function () {
+                    expect(login).property('offsetParent').to.be.null;
+                    expect(logout).property('offsetParent').to.not.be.null;
+
+                    done();
+                });
+            });
+        });
+
+        describe('with user', function () {
+            var hasUser, login, logout, user;
+            beforeEach(function (done) {
+                hasUser = fixture('hasUser');
+                setTimeout(function () {
+                    login = hasUser.querySelector('[slot="login"]');
+                    logout = hasUser.querySelector('[slot="logout"]');
+                    user = hasUser.querySelector('[slot="user-name"]');
+                    done();
+                });
+            });
+            it('should show the user\'s name', function () {
+                expect(user).property('offsetParent').to.not.be.null;
+                var style = getComputedStyle(user);
+                expect(style).property('color').to.be.colored('#c3ddf9')
+            });
+            it('should show a sign out link', function () {
+                expect(logout).property('offsetParent').to.not.be.null;
+
+                var style = getComputedStyle(logout);
+                expect(style).property('color').to.be.colored('#FFFFFF')
+            });
+            it('should not show a sign in link', function () {
+                expect(login).property('offsetParent').to.be.null;
+            });
+
+            it('should change to a sign in link when the user name is removed', function (done) {
+                //Initial condition
+                expect(login).property('offsetParent').to.be.null;
+                expect(logout).property('offsetParent').to.not.be.null;
+
+                hasUser.removeChild(user);
+
+                setTimeout(function () {
+                    expect(login).property('offsetParent').to.not.be.null;
+                    expect(logout).property('offsetParent').to.be.null;
+
+                    done();
+                });
+            });
+        });
+
+    });
+    a11ySuite('noUser', [], function (done) {
+        setTimeout(done);
+    });
+</script>
+</body>
+</html>

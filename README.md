@@ -1,6 +1,14 @@
 # BYU Core Components
 This repository contains the "core" Web Components implementing the BYU theme redesign begun in 2017.
 
+
+## Branch UPDATE: Do Not Delete.
+
+this branch is old, but in use by calendar.byu.edu for a short time. We are working on switching to Latest.
+
+
+
+
 Specifically, it contains the following components:
 * byu-header
 * byu-menu
@@ -42,3 +50,4 @@ In addition, every component must be responsive, providing a first-class experie
 
 ### Using Github
 There's plenty of documentation online about how to work with Github and the Git source control system, and there are excellent Git plugins available for most IDEs. If you've never worked with Github before, github has provided some good documentation at [guides.github.com](http://guides.github.com). You can also join the [slack channel](http://byu-web.slack.com) and connect with other developers from the project.
+

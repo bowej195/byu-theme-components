@@ -4,8 +4,9 @@ This repository contains the "core" Web Components implementing the BYU theme re
 
 ## Branch UPDATE: Do Not Delete.
 
-this branch is old, but in use by calendar.byu.edu for a short time. We are working on switching to Latest.
-
+This branch is old, but in use by calendar.byu.edu for a short time. We are working on switching to Latest.
+Do  not delete this branch!
+We will be updating calendar.byu.edu as soon as possible to use the later real versions of the components.
 
 
 

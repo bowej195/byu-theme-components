@@ -8,12 +8,10 @@
   width: 100%;
   height: auto;
   background: #fff;
-  // opacity used to be set here, but now it is an option.
 }
 
 @mixin bgTransparent() {
-  //background: rgba(255,255,255,0.8);
-  opacity: 0.88;
+  background: $white88;
 }
 
 @mixin outerNav() {
@@ -57,7 +55,7 @@
 
 @mixin menuMoreExpanded() {
   background: $menuActive;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 2px 0 rgba(20, 20, 20, 0.75);
 }
 
 @mixin menuMoreItems() {
@@ -100,7 +98,7 @@
   max-width: 250px;
   z-index: 2;
   background: white;
-  box-shadow: 0 0 2px 0 rgba(0,0,0,0.75);
+  box-shadow: 0 0 2px 0 rgba(20,20,20,0.75);
 }
 
 @mixin moreItemsSlotted() {
